@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className='bg-white  shadow-sm' >
 
-        <div className='flex flex-1 items-center justify-end md:justify-between'>
+        <div className='flex flex-1 items-center justify-end md:justify-between p-2'>
           <NavBar />
 
           <div className='flex items-center gap-4'>
