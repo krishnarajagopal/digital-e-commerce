@@ -11,11 +11,13 @@ const ProductItem = ({ product }) => {
           alt={product?.attributes?.title}
           width={400}
           height={350}
+          priority={false}
+          placeholder="empty"
           className='rounded-lg h-[170px] border-2 object-fill'
         />
       </div>
 
-      <div className='bg-gray-200 rounded-b-lg'>
+      <div className='bg-gray-100 rounded-b-lg'>
         <div className='flex justify-between items-center py-2 '>
           <h2 className='text-[14px] font-medium line-clamp-2'>
             {product?.attributes?.title}

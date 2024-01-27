@@ -15,7 +15,11 @@ const api_url = 'http://127.0.0.1:1337/api';
 
 const getLatestProducts =() => axiosClient.get("/products?populate=*");
 
-export default {getLatestProducts}
+const getProductById = (id) => axiosClient.get(`/products/${id}?populate=*`);
+
+const getProductsByCategory = (category) => axiosClient.get(`/products?filters[category][$eq]=${category}&populate=*`);
+
+export default {getLatestProducts, getProductById, getProductsByCategory};
 
 
 
