@@ -1,18 +1,23 @@
+'use client'
 import React from "react";
 import Image from "next/image";
 import NavBar from "./NavBar";
+import {useUser} from '@clerk/nextjs'
+import {UserButton} from "@clerk/nextjs"
+import {ShoppingCart} from  "lucide-react"
 
 const Header = () => {
-  return (
+  const {user}=useUser()
+  return user&& (
     <header className='bg-white  shadow-sm' >
 
         <div className='flex flex-1 items-center justify-end md:justify-between p-2'>
           <NavBar />
 
           <div className='flex items-center gap-4'>
-            <div className='sm:flex sm:gap-4'>
+            {(!user)?<div className='sm:flex sm:gap-4'>
               <a
-                className='block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-600'
+                className='hidden sm:block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-600'
                 href='/'>
                 Login
               </a>
@@ -23,6 +28,15 @@ const Header = () => {
                 Register
               </a>
             </div>
+          :
+          <div className='flex items-center gap-4'>
+            <UserButton />
+
+            <h2 className='flex gap-1'><ShoppingCart  className='text-primary'/> (0)</h2>
+            
+
+          </div>  
+          }
 
             <button className='block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden'>
               <span className='sr-only'>Toggle menu</span>

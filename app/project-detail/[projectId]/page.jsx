@@ -6,11 +6,15 @@ import BreadCrumbs from "./../../_components/BreadCrumbs";
 import ProjectBanner from "./_components/ProjectBanner";
 import ProjectInfo from "./_components/ProjectInfo";
 import ProductList from "../../_components/ProductList";
+import { usePathname } from "next/navigation";
 
 const ProductDetail = ({ params }) => {
   const [productDetail, setProductDetail] = useState();
   const [productsInCategory, setProductsInCategory]=useState([]);
-
+   
+  // used to get current url path
+  const path= usePathname();
+ 
   useEffect(() => {
   getProductById_();
   // getProductByCategory_();
@@ -21,7 +25,7 @@ const ProductDetail = ({ params }) => {
   const getProductById_ = () => {
     GlobalApi.getProductById(params?.projectId).then((resp) => {
       setProductDetail(resp.data.data);
-      console.log(resp.data.data);
+      // console.log(resp.data.data);
       getProductByCategory_(resp.data.data);
     });
   };
@@ -29,7 +33,7 @@ const ProductDetail = ({ params }) => {
   const getProductByCategory_ = (product) => {
     
     GlobalApi.getProductsByCategory(product?.attributes?.category).then((resp) => {
-      console.log(resp.data.data)
+      // console.log(resp.data.data)
   params?.projectId && setProductsInCategory(resp.data.data);
     });
   };
@@ -40,7 +44,7 @@ const ProductDetail = ({ params }) => {
   return (
     <div>
       <div className='p-5 px-15'>
-        <BreadCrumbs />
+        <BreadCrumbs path={path} />
 
         <div className='grid grid-cols-1 sm:grid-cols-2 mt-10   '>
           {productDetail && <ProjectBanner product={productDetail} />}

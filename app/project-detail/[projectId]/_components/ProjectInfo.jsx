@@ -23,8 +23,8 @@ function replaceWithBr() {
 
   return (
    
-    
     <div>
+      {product ?(   <div>
       <h2 className='text-[20px]'>{product?.attributes?.title}</h2>
       <h2 className='text-[15px] text-gray-500'>{product?.attributes?.category}</h2>
       <h2 className='text-[15px] mt-5 text-gray-700 '>{fullDescription.map((item, index) => <p key={index} className='text-justify pr-5'>{item}</p>)}</h2>
@@ -36,7 +36,12 @@ function replaceWithBr() {
       <button className='flex gap-2 bg-primary rounded-lg p-3 mt-5 text-white hover:bg-blue-600'>
       <ShoppingCart />
         Add to cart</button>
+    </div>):
+(    <div className='w-[600px] h-[1000px] bg-slate-200 animate-pulse'>
+
+    </div>)}
     </div>
+
   )
 }
 

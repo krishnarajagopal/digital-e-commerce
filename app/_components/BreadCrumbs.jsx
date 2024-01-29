@@ -1,12 +1,13 @@
 import React from 'react'
 
-const BreadCrumbs = () => {
+const BreadCrumbs = ({path}) => {
+    // console.log(path)
   return (
 <nav aria-label="Breadcrumb" className="flex">
   <ol className="flex overflow-hidden rounded-lg border border-gray-200 text-gray-600">
     <li className="flex items-center">
       <a
-        href="#"
+        href="/"
         className="flex h-10 items-center gap-1.5 bg-gray-100 px-4 transition hover:text-gray-900"
       >
         <svg
@@ -35,10 +36,10 @@ const BreadCrumbs = () => {
       </span>
 
       <a
-        href="#"
+        href={path}
         className="flex h-10 items-center bg-white pe-4 ps-8 text-xs font-medium transition hover:text-gray-900"
       >
-        Shirts
+        {path.split('/')[1]}
       </a>
     </li>
   </ol>
