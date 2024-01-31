@@ -13,7 +13,7 @@ const ProductSection = () => {
 
 const getLatestProducts_ = () => {
 GlobalApi.getLatestProducts().then((res) => {
-  console.log(res.data.data)
+  // console.log(res.data.data)
   setProductList(res.data.data)
 }).catch((err) => console.log(err))
   };

@@ -1,14 +1,43 @@
 'use client'
-import React from "react";
+import React, {useState, useEffect, useContext} from "react"; 
 import Image from "next/image";
 import NavBar from "./NavBar";
 import {useUser} from '@clerk/nextjs'
 import {UserButton} from "@clerk/nextjs"
 import {ShoppingCart} from  "lucide-react"
+import {usePathname} from 'next/navigation'
+import { CartContext } from "../_context/CartContext";
+import GlobalApi from "../_utils/GlobalApi";
+import Cart from "../_components/Cart";
+import GetCartItems from "../_utils/GetCartItems";
 
 const Header = () => {
-  const {user}=useUser()
-  return user&& (
+  const {isSignedIn, user}=useUser()
+  const [isSignPage,setSignPage]=useState(false);
+  const{cart,setCart} =useContext(CartContext)
+
+  const path =usePathname()
+
+
+
+  useEffect(()=>{
+  setSignPage(path.toString().includes("sign"))
+  if (isSignedIn){GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then((resp)=>{
+    console.log(`latest cart data in header section : ${JSON.stringify(resp.data.data)}`)
+    setCart(resp.data.data)
+  },(err)=>{
+    console.log(err)
+  })
+}
+  },[path,isSignedIn])
+
+
+
+
+  // console.log(`isSignedIn : ${isSignedIn} , user : ${user} , path: ${path}, isSignPage: ${isSignPage}`);
+
+  // console.log(`Header render cart items: ${JSON.stringify(cart)}`);
+  return (!isSignPage) && (
     <header className='bg-white  shadow-sm' >
 
         <div className='flex flex-1 items-center justify-end md:justify-between p-2'>
@@ -18,25 +47,25 @@ const Header = () => {
             {(!user)?<div className='sm:flex sm:gap-4'>
               <a
                 className='hidden sm:block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-600'
-                href='/'>
+                href='/sign-in'>
                 Login
               </a>
 
               <a
                 className='hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-primary transition hover:text-blue-700 sm:block'
-                href='/'>
+                href='/sign-up'>
                 Register
               </a>
             </div>
           :
           <div className='flex items-center gap-4'>
-            <UserButton />
-
-            <h2 className='flex gap-1'><ShoppingCart  className='text-primary'/> (0)</h2>
-            
+            <h2 className='flex gap-1 cursor-pointer'><ShoppingCart  className='text-primary'/> ({cart?.length})</h2>
+            <UserButton />           
 
           </div>  
           }
+
+          {/* <Cart/> */}
 
             <button className='block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden'>
               <span className='sr-only'>Toggle menu</span>

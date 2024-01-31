@@ -6,6 +6,8 @@
       "esnext"
     ],
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "checkJs": true,
     "skipLibCheck": true,
     "strict": false,
     "noEmit": true,
