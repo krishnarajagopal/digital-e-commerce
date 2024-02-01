@@ -52,6 +52,7 @@ const onAddToCartClick =()=>{
         toast.success('Product added to cart')
       console.log(`Add to cart : ${JSON.stringify(resp)}`)
       setCart(GetCartItems(user))
+
       }
 
     },
@@ -61,8 +62,10 @@ const onAddToCartClick =()=>{
     )
 
 
-   }}
+   }
    console.log(`cart after clicking add cart: ${JSON.stringify(cart)}`);
+  }
+
   return (
    
     <div>

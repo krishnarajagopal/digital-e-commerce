@@ -13,6 +13,7 @@ import GetCartItems from "../_utils/GetCartItems";
 
 const Header = () => {
   const {isSignedIn, user}=useUser()
+  const [openCart, setOpenCart]=useState(false);
   const [isSignPage,setSignPage]=useState(false);
   const{cart,setCart} =useContext(CartContext)
 
@@ -23,7 +24,7 @@ const Header = () => {
   useEffect(()=>{
   setSignPage(path.toString().includes("sign"))
   if (isSignedIn){GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then((resp)=>{
-    console.log(`latest cart data in header section : ${JSON.stringify(resp.data.data)}`)
+   
     setCart(resp.data.data)
   },(err)=>{
     console.log(err)
@@ -32,11 +33,8 @@ const Header = () => {
   },[path,isSignedIn])
 
 
+  console.log(`latest cart data in header section : ${JSON.stringify(cart,null,"  ")}`)
 
-
-  // console.log(`isSignedIn : ${isSignedIn} , user : ${user} , path: ${path}, isSignPage: ${isSignPage}`);
-
-  // console.log(`Header render cart items: ${JSON.stringify(cart)}`);
   return (!isSignPage) && (
     <header className='bg-white  shadow-sm' >
 
@@ -59,13 +57,13 @@ const Header = () => {
             </div>
           :
           <div className='flex items-center gap-4'>
-            <h2 className='flex gap-1 cursor-pointer'><ShoppingCart  className='text-primary'/> ({cart?.length})</h2>
+            <h2 className='flex gap-1 cursor-pointer' onClick={()=>setOpenCart(!openCart)}><ShoppingCart  className='text-primary' /> ({cart?.length})</h2>
             <UserButton />           
 
           </div>  
           }
 
-          {/* <Cart/> */}
+          {openCart&& <Cart/>}
 
             <button className='block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden'>
               <span className='sr-only'>Toggle menu</span>

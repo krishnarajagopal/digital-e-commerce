@@ -8,10 +8,10 @@ const Cart = () => {
   const { isSignedIn,user}=useUser()
   const { cart, setCart } = useContext(CartContext);
 
-      console.log(`is user signed in :  ${isSignedIn}  user email for cart:${user?.primaryEmailAddress?.emailAddress}   cart items to display: ${JSON.stringify(cart)}`);
+      console.log(`is user signed in :  ${isSignedIn}  user email for cart:${user?.primaryEmailAddress?.emailAddress}   cart items to display: ${JSON.stringify(cart,null,"  ")}`);
   return (
     <div className='w-[300px] h-[250px] bg-gray-100 rounded-md absolute z-10 mx-10 my-4 right-10 top-12 p-5 border shadow-sm overflow-auto'>
-      <div className='mt-4 space-y-6'>
+      {/* <div className='mt-4 space-y-6'>
         <ul className='space-y-4'>{cart?.map((item, index) => {
                   <li className='flex items-center gap-4'>
                   <img
@@ -27,7 +27,7 @@ const Cart = () => {
                       </div>
                 </li>
         })}</ul>
-      </div>
+      </div> */}
       <div className='space-y-4 text-center mt-5'>
         {/* <a
         href="#"
