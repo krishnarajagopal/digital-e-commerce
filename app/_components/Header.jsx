@@ -15,8 +15,9 @@ const Header = () => {
   const {isSignedIn, user}=useUser()
   const [openCart, setOpenCart]=useState(false);
   const [isSignPage,setSignPage]=useState(false);
-  const{cart,setCart} =useContext(CartContext)
-
+// const{cart,setCart} =useContext(CartContext)
+const[cart,setCart] =useState([])
+const [cartCount,setCartCount]=useState(0)
   const path =usePathname()
 
 
@@ -24,8 +25,9 @@ const Header = () => {
   useEffect(()=>{
   setSignPage(path.toString().includes("sign"))
   if (isSignedIn){GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then((resp)=>{
-   
-    setCart(resp.data.data)
+   const newCart=resp.data.data
+    setCart(newCart)
+    setCartCount(newCart.length)
   },(err)=>{
     console.log(err)
   })
@@ -57,7 +59,7 @@ const Header = () => {
             </div>
           :
           <div className='flex items-center gap-4'>
-            <h2 className='flex gap-1 cursor-pointer' onClick={()=>setOpenCart(!openCart)}><ShoppingCart  className='text-primary' /> ({cart?.length})</h2>
+            <h2 className='flex gap-1 cursor-pointer' onClick={()=>setOpenCart(!openCart)}><ShoppingCart  className='text-primary' /> ({cartCount})</h2>
             <UserButton />           
 
           </div>  

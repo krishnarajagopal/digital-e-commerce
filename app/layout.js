@@ -19,11 +19,11 @@ const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
 
-const[cart,setCart]=useState([])
+// const[cart,setCart]=useState([])
 
   return (
     <ClerkProvider>
-      <CartContext.Provider value={{cart,setCart}} >
+      {/* <CartContext.Provider value={{cart,setCart}} > */}
     <html lang="en">
     <body className={poppins.className}>
 
@@ -33,7 +33,7 @@ const[cart,setCart]=useState([])
         <Toaster richColors closeButton invert visibleToasts={2} position="bottom-right"/>
         </body>
     </html>
-    </CartContext.Provider>
+    {/* </CartContext.Provider> */}
   </ClerkProvider>
   );
 }

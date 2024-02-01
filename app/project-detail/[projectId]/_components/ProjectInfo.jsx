@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import { ShoppingCart } from 'lucide-react';
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from 'next/navigation';
@@ -12,8 +12,8 @@ import GetCartItems from '../../../_utils/GetCartItems';
 const ProjectInfo = ({product}) => {
 const { isSignedIn,user}=useUser()
 const router=useRouter()
-const{cart,setCart} =useContext(CartContext)
-
+// const{cart,setCart} =useContext(CartContext)
+const[cart,setCart] =useState([])
 
 // Destructuring the product array to get the description of the json
 const {attributes:{description:DescriptionArray}}=product
@@ -35,7 +35,7 @@ function replaceWithBr() {
 
 
 const onAddToCartClick =()=>{
-   if (!isSignedIn) {
+   if (!user) {
     router.push('/sign-in')
     return;
    } else {
@@ -50,8 +50,12 @@ const onAddToCartClick =()=>{
     (resp)=>{
       if (resp.statusText==='OK') {
         toast.success('Product added to cart')
-      console.log(`Add to cart : ${JSON.stringify(resp)}`)
-      setCart(GetCartItems(user))
+      // console.log(`Add to cart : ${JSON.stringify(resp)}`)
+      
+      GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then((resp)=>{
+        console.log(`cart after clicking add cart : ${JSON.stringify(resp.data.data)}`)
+        return(resp.data.data)
+      })
 
       }
 
@@ -63,7 +67,7 @@ const onAddToCartClick =()=>{
 
 
    }
-   console.log(`cart after clicking add cart: ${JSON.stringify(cart)}`);
+  //  console.log(`cart after clicking add cart: ${JSON.stringify(cart)}`);
   }
 
   return (

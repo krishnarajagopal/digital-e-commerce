@@ -1,12 +1,13 @@
 'use client'
-import React, { useContext , useEffect} from "react";
+import React, { useContext ,useState, useEffect} from "react";
 import { CartContext } from "../_context/CartContext";
 import { useUser } from "@clerk/nextjs";
 import GetCartItems from '../_utils/GetCartItems';
 
 const Cart = () => {
   const { isSignedIn,user}=useUser()
-  const { cart, setCart } = useContext(CartContext);
+// const{cart,setCart} =useContext(CartContext)
+const[cart,setCart] =useState([])
 
       console.log(`is user signed in :  ${isSignedIn}  user email for cart:${user?.primaryEmailAddress?.emailAddress}   cart items to display: ${JSON.stringify(cart,null,"  ")}`);
   return (
