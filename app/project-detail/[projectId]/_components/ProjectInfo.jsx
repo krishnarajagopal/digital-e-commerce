@@ -4,7 +4,7 @@ import { ShoppingCart } from 'lucide-react';
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from 'next/navigation';
 import GlobalApi from '../../../_utils/GlobalApi';
-import { CartContext } from '../../../_context/CartContext';
+import  CartContext  from '../../../_context/CartContext';
 import { toast } from "sonner"
 import GetCartItems from '../../../_utils/GetCartItems';
 
@@ -14,14 +14,17 @@ const { isSignedIn,user}=useUser()
 const router=useRouter()
 const{cart,setCart} =useContext(CartContext)
 
+console.log (`cart data from productinfo page: ${cart}`)
 
 // Destructuring the product array to get the description of the json
 const {attributes:{description:DescriptionArray}}=product
 
 const fullDescription = DescriptionArray.map((item, index) => (item.children[0].text))
 
+// let newCart=[...cart,product]
+// console.log(`product info product details : ${JSON.stringify(product)}`);
+// console.log(`newCart details : ${JSON.stringify(newCart)}`);
 
-// console.log(fullDescription)
 /**
  * Replaces newline characters with <br /> in the whatsIncluded attribute of the product.
  *
@@ -51,7 +54,17 @@ const onAddToCartClick =()=>{
       if (resp.statusText==='OK') {
         toast.success('Product added to cart')
       console.log(`Add to cart : ${JSON.stringify(resp)}`)
-      setCart(GetCartItems(user))
+        GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then(
+          (resp) => {
+            console.log(`latest cart data : ${JSON.stringify(resp.data.data)}`);
+            setCart(resp.data.data);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      
+    //   console.log(`cart : ${JSON.stringify(cart, null, ' ')}`)
 
       }
 
@@ -63,7 +76,7 @@ const onAddToCartClick =()=>{
 
 
    }
-   console.log(`cart after clicking add cart: ${JSON.stringify(cart)}`);
+
   }
 
   return (

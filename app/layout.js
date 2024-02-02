@@ -5,9 +5,11 @@ import Header from "./_components/Header";
 import { Footer } from "./_components/Footer";
 import { ClerkProvider } from '@clerk/nextjs'
 import { useReducer, useState } from "react";
-import { CartContext } from "./_context/CartContext";
+import  CartContext  from "./_context/CartContext";
 import GlobalApi from "./_utils/GlobalApi";
 import { Toaster } from 'sonner';
+import CartState from "./_context/CartState";
+
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
@@ -23,7 +25,7 @@ const[cart,setCart]=useState([])
 
   return (
     <ClerkProvider>
-      <CartContext.Provider value={{cart,setCart}} >
+      <CartContext.Provider value={{cart, setCart}}>
     <html lang="en">
     <body className={poppins.className}>
 
