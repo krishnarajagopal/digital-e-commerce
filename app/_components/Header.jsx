@@ -1,71 +1,79 @@
-'use client'
-import React, {useState, useEffect, useContext} from "react"; 
+"use client";
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import NavBar from "./NavBar";
-import {useUser} from '@clerk/nextjs'
-import {UserButton} from "@clerk/nextjs"
-import {ShoppingCart} from  "lucide-react"
-import {usePathname} from 'next/navigation'
-import { CartContext } from "../_context/CartContext";
+import { useUser } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
+import { ShoppingCart } from "lucide-react";
+import { usePathname } from "next/navigation";
+import CartState from "../_context/CartState";
 import GlobalApi from "../_utils/GlobalApi";
 import Cart from "../_components/Cart";
 import GetCartItems from "../_utils/GetCartItems";
+import CartContext from "../_context/CartContext";
 
 const Header = () => {
-  const {isSignedIn, user}=useUser()
-  const [openCart, setOpenCart]=useState(false);
-  const [isSignPage,setSignPage]=useState(false);
-// const{cart,setCart} =useContext(CartContext)
-const[cart,setCart] =useState([])
-const [cartCount,setCartCount]=useState(0)
-  const path =usePathname()
+  const { isSignedIn, user } = useUser();
+  const [openCart, setOpenCart] = useState(false);
+  const [isSignPage, setSignPage] = useState(false);
+  const { cart, setCart } = useContext(CartContext);
+  const path = usePathname();
 
+  useEffect(() => {
+    setSignPage(path.toString().includes("sign"));
 
+  }, [path, isSignedIn]);
+  
 
-  useEffect(()=>{
-  setSignPage(path.toString().includes("sign"))
-  if (isSignedIn){GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then((resp)=>{
-   const newCart=resp.data.data
-    setCart(newCart)
-    setCartCount(newCart.length)
-  },(err)=>{
-    console.log(err)
-  })
-}
+  useEffect(() => {
+        if (isSignedIn) {
+          GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then(
+            (resp) => {
+              // console.log(
+              //   `latest cart data : ${JSON.stringify(resp.data.data)}`
+              // );
+              setCart(resp.data.data);
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
+        }
   },[path,isSignedIn])
-
-
-  console.log(`latest cart data in header section : ${JSON.stringify(cart,null,"  ")}`)
-
-  return (!isSignPage) && (
-    <header className='bg-white  shadow-sm' >
-
+console.log (`cart data in header : ${JSON.stringify(cart,null," ")}`)
+  return (
+    !isSignPage && (
+      <header className='bg-white  shadow-sm'>
         <div className='flex flex-1 items-center justify-end md:justify-between p-2'>
           <NavBar />
 
           <div className='flex items-center gap-4'>
-            {(!user)?<div className='sm:flex sm:gap-4'>
-              <a
-                className='hidden sm:block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-600'
-                href='/sign-in'>
-                Login
-              </a>
+            {!user ? (
+              <div className='sm:flex sm:gap-4'>
+                <a
+                  className='hidden sm:block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-600'
+                  href='/sign-in'>
+                  Login
+                </a>
 
-              <a
-                className='hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-primary transition hover:text-blue-700 sm:block'
-                href='/sign-up'>
-                Register
-              </a>
-            </div>
-          :
-          <div className='flex items-center gap-4'>
-            <h2 className='flex gap-1 cursor-pointer' onClick={()=>setOpenCart(!openCart)}><ShoppingCart  className='text-primary' /> ({cartCount})</h2>
-            <UserButton />           
+                <a
+                  className='hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-primary transition hover:text-blue-700 sm:block'
+                  href='/sign-up'>
+                  Register
+                </a>
+              </div>
+            ) : (
+              <div className='flex items-center gap-4'>
+                <h2
+                  className='flex gap-1 cursor-pointer'
+                  onClick={() => setOpenCart(!openCart)}>
+                  <ShoppingCart className='text-primary' /> ({cart?.length})
+                </h2>
+                <UserButton />
+              </div>
+            )}
 
-          </div>  
-          }
-
-          {openCart&& <Cart/>}
+            {openCart && <Cart />}
 
             <button className='block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden'>
               <span className='sr-only'>Toggle menu</span>
@@ -85,8 +93,8 @@ const [cartCount,setCartCount]=useState(0)
             </button>
           </div>
         </div>
-
-    </header>
+      </header>
+    )
   );
 };
 

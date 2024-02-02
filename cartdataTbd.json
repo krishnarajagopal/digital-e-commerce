@@ -1,0 +1,479 @@
+[
+        {
+            "id": 73,
+            "attributes": {
+                "userName": "Suseela Rajagopal",
+                "email": "suseerajagopal@gmail.com",
+                "createdAt": "2024-02-02T18:16:41.187Z",
+                "updatedAt": "2024-02-02T18:16:41.187Z",
+                "publishedAt": "2024-02-02T18:16:41.185Z",
+                "products": {
+                    "data": [
+                        {
+                            "id": 2,
+                            "attributes": {
+                                "title": "Build & Deploy Dockerized Web Apps with Azure DevOps on Kubernetes",
+                                "description": [
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "In this workshop you will learn to automate build and deployment of dockerized ASP.NET Core web application. Microservice based Application is deployed to a Kubernetes cluster running on Azure Kubernetes Service (AKS) using Azure DevOps. ",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Speaker's Bio: Mamta Jha, Co-founder TechScalable ",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Enterprise architect and author with 17+ years of IT experience. Skilled Cloud Solutions Architect with 9+ years of hands-on experience migrating, automating,  and optimizing mission critical deployments in various cloud platforms,  leveraging configuration management, CI/CD, and DevOps tools. She has hands-on experience implementing solutions and designing on all Public Cloud : AWS,  Azure and Google Cloud. She is a Red Hat Certified and Microsoft Certified Instructor. ",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "price": 2.99,
+                                "instantDelivery": true,
+                                "whatsIncluded": "Azure services and related products: \n\nDrag\n\n• Azure DevOps Repos \n\nDrag\n\n• Azure DevOps pipelines \n\nDrag\n\n• Azure Kubernetes Service \n\nDrag\n\n• Azure Container Registry \n\nDrag\n\n• Azure Load Balancer \n\nDrag\n\n• Azure SQL \n\nDrag\n\n\n\n\n",
+                                "category": "TUTORIAL",
+                                "createdAt": "2024-01-23T03:53:39.452Z",
+                                "updatedAt": "2024-01-24T23:37:01.118Z",
+                                "publishedAt": "2024-01-23T03:53:41.024Z",
+                                "url": "https://www.youtube.com/watch?v=B0n_JZ7N028",
+                                "banner": {
+                                    "data": {
+                                        "id": 13,
+                                        "attributes": {
+                                            "name": "Docker.PNG",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 973,
+                                            "height": 607,
+                                            "formats": {
+                                                "small": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981962/small_Docker_d84011d7d9.png",
+                                                    "hash": "small_Docker_d84011d7d9",
+                                                    "mime": "image/png",
+                                                    "name": "small_Docker.PNG",
+                                                    "path": null,
+                                                    "size": 73.11,
+                                                    "width": 500,
+                                                    "height": 312,
+                                                    "provider_metadata": {
+                                                        "public_id": "small_Docker_d84011d7d9",
+                                                        "resource_type": "image"
+                                                    }
+                                                },
+                                                "medium": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981962/medium_Docker_d84011d7d9.png",
+                                                    "hash": "medium_Docker_d84011d7d9",
+                                                    "mime": "image/png",
+                                                    "name": "medium_Docker.PNG",
+                                                    "path": null,
+                                                    "size": 147.78,
+                                                    "width": 750,
+                                                    "height": 468,
+                                                    "provider_metadata": {
+                                                        "public_id": "medium_Docker_d84011d7d9",
+                                                        "resource_type": "image"
+                                                    }
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981961/thumbnail_Docker_d84011d7d9.png",
+                                                    "hash": "thumbnail_Docker_d84011d7d9",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_Docker.PNG",
+                                                    "path": null,
+                                                    "size": 22.56,
+                                                    "width": 245,
+                                                    "height": 153,
+                                                    "provider_metadata": {
+                                                        "public_id": "thumbnail_Docker_d84011d7d9",
+                                                        "resource_type": "image"
+                                                    }
+                                                }
+                                            },
+                                            "hash": "Docker_d84011d7d9",
+                                            "ext": ".PNG",
+                                            "mime": "image/png",
+                                            "size": 59.04,
+                                            "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981962/Docker_d84011d7d9.png",
+                                            "previewUrl": null,
+                                            "provider": "cloudinary",
+                                            "provider_metadata": {
+                                                "public_id": "Docker_d84011d7d9",
+                                                "resource_type": "image"
+                                            },
+                                            "createdAt": "2024-01-23T03:52:42.692Z",
+                                            "updatedAt": "2024-01-23T03:52:42.692Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": 74,
+            "attributes": {
+                "userName": "Suseela Rajagopal",
+                "email": "suseerajagopal@gmail.com",
+                "createdAt": "2024-02-02T19:13:55.259Z",
+                "updatedAt": "2024-02-02T19:13:55.259Z",
+                "publishedAt": "2024-02-02T19:13:55.256Z",
+                "products": {
+                    "data": [
+                        {
+                            "id": 2,
+                            "attributes": {
+                                "title": "Build & Deploy Dockerized Web Apps with Azure DevOps on Kubernetes",
+                                "description": [
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "In this workshop you will learn to automate build and deployment of dockerized ASP.NET Core web application. Microservice based Application is deployed to a Kubernetes cluster running on Azure Kubernetes Service (AKS) using Azure DevOps. ",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Speaker's Bio: Mamta Jha, Co-founder TechScalable ",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Enterprise architect and author with 17+ years of IT experience. Skilled Cloud Solutions Architect with 9+ years of hands-on experience migrating, automating,  and optimizing mission critical deployments in various cloud platforms,  leveraging configuration management, CI/CD, and DevOps tools. She has hands-on experience implementing solutions and designing on all Public Cloud : AWS,  Azure and Google Cloud. She is a Red Hat Certified and Microsoft Certified Instructor. ",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "price": 2.99,
+                                "instantDelivery": true,
+                                "whatsIncluded": "Azure services and related products: \n\nDrag\n\n• Azure DevOps Repos \n\nDrag\n\n• Azure DevOps pipelines \n\nDrag\n\n• Azure Kubernetes Service \n\nDrag\n\n• Azure Container Registry \n\nDrag\n\n• Azure Load Balancer \n\nDrag\n\n• Azure SQL \n\nDrag\n\n\n\n\n",
+                                "category": "TUTORIAL",
+                                "createdAt": "2024-01-23T03:53:39.452Z",
+                                "updatedAt": "2024-01-24T23:37:01.118Z",
+                                "publishedAt": "2024-01-23T03:53:41.024Z",
+                                "url": "https://www.youtube.com/watch?v=B0n_JZ7N028",
+                                "banner": {
+                                    "data": {
+                                        "id": 13,
+                                        "attributes": {
+                                            "name": "Docker.PNG",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 973,
+                                            "height": 607,
+                                            "formats": {
+                                                "small": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981962/small_Docker_d84011d7d9.png",
+                                                    "hash": "small_Docker_d84011d7d9",
+                                                    "mime": "image/png",
+                                                    "name": "small_Docker.PNG",
+                                                    "path": null,
+                                                    "size": 73.11,
+                                                    "width": 500,
+                                                    "height": 312,
+                                                    "provider_metadata": {
+                                                        "public_id": "small_Docker_d84011d7d9",
+                                                        "resource_type": "image"
+                                                    }
+                                                },
+                                                "medium": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981962/medium_Docker_d84011d7d9.png",
+                                                    "hash": "medium_Docker_d84011d7d9",
+                                                    "mime": "image/png",
+                                                    "name": "medium_Docker.PNG",
+                                                    "path": null,
+                                                    "size": 147.78,
+                                                    "width": 750,
+                                                    "height": 468,
+                                                    "provider_metadata": {
+                                                        "public_id": "medium_Docker_d84011d7d9",
+                                                        "resource_type": "image"
+                                                    }
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981961/thumbnail_Docker_d84011d7d9.png",
+                                                    "hash": "thumbnail_Docker_d84011d7d9",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_Docker.PNG",
+                                                    "path": null,
+                                                    "size": 22.56,
+                                                    "width": 245,
+                                                    "height": 153,
+                                                    "provider_metadata": {
+                                                        "public_id": "thumbnail_Docker_d84011d7d9",
+                                                        "resource_type": "image"
+                                                    }
+                                                }
+                                            },
+                                            "hash": "Docker_d84011d7d9",
+                                            "ext": ".PNG",
+                                            "mime": "image/png",
+                                            "size": 59.04,
+                                            "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1705981962/Docker_d84011d7d9.png",
+                                            "previewUrl": null,
+                                            "provider": "cloudinary",
+                                            "provider_metadata": {
+                                                "public_id": "Docker_d84011d7d9",
+                                                "resource_type": "image"
+                                            },
+                                            "createdAt": "2024-01-23T03:52:42.692Z",
+                                            "updatedAt": "2024-01-23T03:52:42.692Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": 75,
+            "attributes": {
+                "userName": "Suseela Rajagopal",
+                "email": "suseerajagopal@gmail.com",
+                "createdAt": "2024-02-02T19:24:21.233Z",
+                "updatedAt": "2024-02-02T19:24:21.233Z",
+                "publishedAt": "2024-02-02T19:24:21.231Z",
+                "products": {
+                    "data": [
+                        {
+                            "id": 3,
+                            "attributes": {
+                                "title": "SAP Business Technology Platform Foundation (SAP BTP)",
+                                "description": [
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "After completing this unit, you will be able to:",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Illustrate the intelligent, sustainable enterprise strategy",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Discover the basics of cloud computing",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Discover hyperscalers",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Discover the service and deployment models",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Illustrate the business processes of the intelligent enterprise",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Identify the solution areas of an intelligent, sustainable enterprise",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Describe SAP Business Technology Platform (SAP BTP)",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "paragraph",
+                                        "children": [
+                                            {
+                                                "text": "Paraphrase the three main use-cases for SAP BTP",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "price": 3.99,
+                                "instantDelivery": true,
+                                "whatsIncluded": "After completing this unit, you will be able to:\n\nAnalyze SAP BTP as a component of intelligent, sustainable enterprise\nIllustrate the architecture of SAP BTP\nDemonstrate the SAP BTP Cockpit\nIdentify the services in SAP BTP\nDemonstrate the SAP Discovery Center\nAnalyze the connectivity in SAP BTP",
+                                "category": "TUTORIAL",
+                                "createdAt": "2024-01-23T04:13:32.835Z",
+                                "updatedAt": "2024-01-25T00:37:15.768Z",
+                                "publishedAt": "2024-01-23T04:14:25.697Z",
+                                "url": "https://learning.sap.com/learning-journeys/discover-sap-business-technology-platform",
+                                "banner": {
+                                    "data": {
+                                        "id": 17,
+                                        "attributes": {
+                                            "name": "SAP-BTP-FOUNDATION.PNG",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 804,
+                                            "height": 440,
+                                            "formats": {
+                                                "small": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1706143030/small_SAP_BTP_FOUNDATION_2545a391a1.png",
+                                                    "hash": "small_SAP_BTP_FOUNDATION_2545a391a1",
+                                                    "mime": "image/png",
+                                                    "name": "small_SAP-BTP-FOUNDATION.PNG",
+                                                    "path": null,
+                                                    "size": 59.35,
+                                                    "width": 500,
+                                                    "height": 274,
+                                                    "provider_metadata": {
+                                                        "public_id": "small_SAP_BTP_FOUNDATION_2545a391a1",
+                                                        "resource_type": "image"
+                                                    }
+                                                },
+                                                "medium": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1706143031/medium_SAP_BTP_FOUNDATION_2545a391a1.png",
+                                                    "hash": "medium_SAP_BTP_FOUNDATION_2545a391a1",
+                                                    "mime": "image/png",
+                                                    "name": "medium_SAP-BTP-FOUNDATION.PNG",
+                                                    "path": null,
+                                                    "size": 118.85,
+                                                    "width": 750,
+                                                    "height": 410,
+                                                    "provider_metadata": {
+                                                        "public_id": "medium_SAP_BTP_FOUNDATION_2545a391a1",
+                                                        "resource_type": "image"
+                                                    }
+                                                },
+                                                "thumbnail": {
+                                                    "ext": ".PNG",
+                                                    "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1706143030/thumbnail_SAP_BTP_FOUNDATION_2545a391a1.png",
+                                                    "hash": "thumbnail_SAP_BTP_FOUNDATION_2545a391a1",
+                                                    "mime": "image/png",
+                                                    "name": "thumbnail_SAP-BTP-FOUNDATION.PNG",
+                                                    "path": null,
+                                                    "size": 19.16,
+                                                    "width": 245,
+                                                    "height": 134,
+                                                    "provider_metadata": {
+                                                        "public_id": "thumbnail_SAP_BTP_FOUNDATION_2545a391a1",
+                                                        "resource_type": "image"
+                                                    }
+                                                }
+                                            },
+                                            "hash": "SAP_BTP_FOUNDATION_2545a391a1",
+                                            "ext": ".PNG",
+                                            "mime": "image/png",
+                                            "size": 40.64,
+                                            "url": "https://res.cloudinary.com/dgkovtdsy/image/upload/v1706143030/SAP_BTP_FOUNDATION_2545a391a1.png",
+                                            "previewUrl": null,
+                                            "provider": "cloudinary",
+                                            "provider_metadata": {
+                                                "public_id": "SAP_BTP_FOUNDATION_2545a391a1",
+                                                "resource_type": "image"
+                                            },
+                                            "createdAt": "2024-01-25T00:37:11.786Z",
+                                            "updatedAt": "2024-01-25T00:37:11.786Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "page": 1,
+            "pageSize": 25,
+            "pageCount": 1,
+            "total": 3
+        }
+    }
+}
