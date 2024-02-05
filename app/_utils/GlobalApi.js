@@ -26,6 +26,11 @@ const addToCart = (data) => axiosClient.post("/carts", data);
 
 const getCartItems = (email) => axiosClient.get(`/carts?populate[products][populate][0]=banner&filters[email][$eq]=${email}`);
 
+
+// Delete user cart items
+
+const 
+
 export default {getLatestProducts, getProductById, getProductsByCategory, addToCart, getCartItems};
 
 

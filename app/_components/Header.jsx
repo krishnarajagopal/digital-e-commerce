@@ -40,7 +40,7 @@ const Header = () => {
           );
         }
   },[path,isSignedIn])
-console.log (`cart data in header : ${JSON.stringify(cart,null," ")}`)
+// console.log (`cart data in header : ${JSON.stringify(cart,null," ")}`)
   return (
     !isSignPage && (
       <header className='bg-white  shadow-sm'>

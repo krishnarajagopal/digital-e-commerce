@@ -14,7 +14,7 @@ const { isSignedIn,user}=useUser()
 const router=useRouter()
 const{cart,setCart} =useContext(CartContext)
 
-console.log (`cart data from productinfo page: ${cart}`)
+// console.log (`cart data from productinfo page: ${JSON.stringify(cart,null,"    ")}`)
 
 // Destructuring the product array to get the description of the json
 const {attributes:{description:DescriptionArray}}=product
