@@ -1,14 +1,21 @@
 "use client";
 import React, { useContext, useState ,useEffect} from "react";
 import CartContext from "../_context/CartContext";
+import GlobalApi from "../_utils/GlobalApi"
+import { useUser } from "@clerk/nextjs";
+import { toast } from "sonner"
+
+
 const Cart = () => {
+  const { isSignedIn,user}=useUser()
   const { cart, setCart } = useContext(CartContext);
   const [total, setTotal] =useState(0)
- useEffect(()=>{
-cart&&GetTotalAmount()
-},[cart])
+  useEffect(()=>{
+    cart&&GetTotalAmount()
+  },[cart])
 
   const cartValues = cart.map((item, index) => ({
+    id:item?.id,
     image:
       item?.attributes?.products?.data[0]?.attributes?.banner?.data?.attributes
         ?.formats?.small?.url,
@@ -26,11 +33,37 @@ cart&&GetTotalAmount()
    setTotal(priceArray.toFixed(2));
 
   };
+  /*
+  *Delete cart Item
+  *
+  */
+  const DeleteCartItem_ = (id) => {
+    // console.log(`delete id : ${id}`);
+    GlobalApi.deleteCartItem(id).then(
+    (resp)=>{
+      if (resp.statusText==='OK') {
+        toast.warning('Product deleted from cart')
+        console.log(`Details of deleted item from cart : ${JSON.stringify(resp)}`)
+        GlobalApi.getCartItems(user.primaryEmailAddress.emailAddress).then(
+          (resp) => {
+            console.log(`latest cart data : ${JSON.stringify(resp.data.data)}`);
+            setCart(resp.data.data);
+          },
+          (err) => {
+            console.log(err);
+          }
+        )
+      }
+    },
+    (err)=>{
+              toast.error(`Error while deleting cart item :  ${err.message}`)
+              console.log(`Error while deleting cart item:  ${err.message}`)
+    }
+    );
+  }
 
-  // cartValues&&{ cartValues.map
-  //   // cartValues.reduce((total, {price})=>(total +=price))
 
-  return (
+    return (
     <section>
       <div className='mx-auto max-w-screen-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8'>
         <div className='mx-auto max-w-3xl'>
@@ -45,9 +78,7 @@ cart&&GetTotalAmount()
               {cartValues.map((item, index) => (
                 <li className='flex items-center gap-4' key={index}>
                   <img
-                    src={item?.image
-
-                    }
+                    src={item?.image}
                     alt=''
                     className='h-16 w-16 rounded object-cover'
                   />
@@ -60,27 +91,23 @@ cart&&GetTotalAmount()
                     <dl className='mt-0.5 space-y-px text-[10px] text-gray-600'>
                       <div>
                         <dt className='inline'>Category:</dt>
-                        <dd className='inline'>
-                          {
-                            item?.category
-                          }
-                        </dd>
+                        <dd className='inline'>{item?.category}</dd>
                       </div>
 
                       <div>
                         <dt className='inline text-bold'>Price : $ </dt>
-                        <dd className='inline text-bold'>
-                          {
-                            item?.price
-                          }
-                        </dd>
+                        <dd className='inline text-bold'>{item?.price}</dd>
                       </div>
                     </dl>
                   </div>
 
                   <div className='flex flex-auto w-32 items-center justify-end gap-1'>
                     $ {item?.price}
-                    <button className='text-gray-600 transition hover:text-red-600'>
+                    <button
+                      className='text-gray-600 transition hover:text-red-600'
+                      onClick={()=>DeleteCartItem_(item?.id)}
+                      value={item?.id}
+                      >
                       <span className='sr-only'>Remove item</span>
 
                       <svg
@@ -111,8 +138,6 @@ cart&&GetTotalAmount()
                   </div>
                 </dl>
 
-
-
                 <div className='flex justify-end'>
                   <a
                     href='#'
@@ -126,7 +151,8 @@ cart&&GetTotalAmount()
         </div>
       </div>
     </section>
-  );
-};
+    );
+
+}
 
 export default Cart;

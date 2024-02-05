@@ -28,10 +28,16 @@ const getCartItems = (email) => axiosClient.get(`/carts?populate[products][popul
 
 
 // Delete user cart items
+const deleteCartItem=(id)=>axiosClient.delete(`/carts/${id}`)
 
-const 
-
-export default {getLatestProducts, getProductById, getProductsByCategory, addToCart, getCartItems};
+export default {
+  getLatestProducts,
+  getProductById,
+  getProductsByCategory,
+  addToCart,
+  getCartItems,
+  deleteCartItem,
+};
 
 
 
