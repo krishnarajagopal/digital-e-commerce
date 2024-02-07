@@ -4,12 +4,14 @@ import CartContext from "../_context/CartContext";
 import GlobalApi from "../_utils/GlobalApi"
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner"
+import { useRouter } from "next/navigation";
 
 
 const Cart = () => {
   const { isSignedIn,user}=useUser()
   const { cart, setCart } = useContext(CartContext);
   const [total, setTotal] =useState(0)
+  const router =useRouter()
   useEffect(()=>{
     cart&&GetTotalAmount()
   },[cart])
@@ -140,11 +142,11 @@ const Cart = () => {
 									</dl>
 
 									<div className='flex justify-end'>
-										<a
-											href='/checkout'
+										<button
+											onClick={() => {router.push(`/checkout?amount=${cart && total}`)}}
 											className='block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600'>
 											Checkout
-										</a>
+										</button>
 									</div>
 								</div>
 							</div>

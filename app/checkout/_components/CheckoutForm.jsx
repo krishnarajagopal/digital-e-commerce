@@ -1,13 +1,19 @@
-
 import {
 	useStripe,
 	useElements,
 	PaymentElement,
 } from '@stripe/react-stripe-js';
+import { useState } from 'react';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({amount}) => {
 	const stripe = useStripe();
 	const elements = useElements();
+	const [errorMessage, setErrorMessage] = useState();
+	const [loading, setLoading] = useState(false);
+	const handleError = (error) => {
+		setLoading(false);
+		setErrorMessage(error.message);
+	};
 
 	const handleSubmit = async (event) => {
 		// We don't want to let default form submission happen here,
@@ -20,12 +26,30 @@ const CheckoutForm = () => {
 			return;
 		}
 
+		setLoading(true);
+		// Trigger form validation and wallet collection
+		const { error: submitError } = await elements.submit();
+		if (submitError) {
+			handleError(submitError);
+			return;
+		}
+
+
+
+		const res = await fetch('/api/create-intent', {
+			method: 'POST',
+			body: JSON.stringify({
+				amount: amount,
+			}),
+		});
+                // create payment intent and obtain client secret
+		const clientSecret = await res.json();
 		const result = await stripe.confirmPayment({
 			//`Elements` instance that was used to create the Payment Element
-			clientSecret:
-                        elements,
+			clientSecret,
+			elements,
 			confirmParams: {
-				return_url: 'https://example.com/order/123/complete',
+				return_url: 'http://localhost:3000/',
 			},
 		});
 
