@@ -4,8 +4,9 @@ import {
 	PaymentElement,
 } from '@stripe/react-stripe-js';
 import { useState } from 'react';
+import PaymentSuccessfulPage from '../../../(WithoutLayout)/PaymentSuccessfulPage/page';
 
-const CheckoutForm = ({amount}) => {
+const CheckoutForm = ({ amount }) => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const [errorMessage, setErrorMessage] = useState();
@@ -34,22 +35,20 @@ const CheckoutForm = ({amount}) => {
 			return;
 		}
 
-
-
 		const res = await fetch('/api/create-intent', {
 			method: 'POST',
 			body: JSON.stringify({
 				amount: amount,
 			}),
 		});
-                // create payment intent and obtain client secret
+		// create payment intent and obtain client secret
 		const clientSecret = await res.json();
 		const result = await stripe.confirmPayment({
 			//`Elements` instance that was used to create the Payment Element
 			clientSecret,
 			elements,
 			confirmParams: {
-				return_url: 'http://localhost:3000/',
+				return_url: 'http://localhost:3000/PaymentSuccessfulPage',
 			},
 		});
 
