@@ -11,7 +11,7 @@ const Checkout = () => {
 	const options = {
 		mode: 'payment',
 		currency: 'usd',
-		amount: searchParams.get('amount') * 100,
+		amount: Number((searchParams.get('amount') * 100).toFixed(2)),
 	};
 	return (
 		<Elements

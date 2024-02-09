@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
 const[cart,setCart]=useState([])
 
   return (
-    // <ClerkProvider>
+
       <CartContext.Provider value={{cart, setCart}}>
     <html lang="en">
     <body className={poppins.className}>
@@ -36,6 +36,6 @@ const[cart,setCart]=useState([])
         </body>
     </html>
     </CartContext.Provider>
-  // {/* </ClerkProvider> */}
+
   );
 }

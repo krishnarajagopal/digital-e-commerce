@@ -20,14 +20,14 @@ const NavBar = () => {
         <Link href="/">
           <Image src={logo} alt="logo" height={50} width={50} className="w-20 p-2" />
         </Link>
-        <div className='relative w-full hidden lg:inline-flex lg:w-[500px] h-10 text-base text-primeColor border-[1px] rounded-xl border-black items-center gap-2 justify-between px-6'>
+        {/* <div className='relative w-full hidden lg:inline-flex lg:w-[500px] h-10 text-base text-primeColor border-[1px] rounded-xl border-black items-center gap-2 justify-between px-6'>
           <input type="text"  
           className='flex-1 h-full outline-none bg-transparent placeholder:text-gray-600' 
           placeholder=' Search your products here' 
           onChange={(e) => setSearchQuery(e.target.value)}
           value={searchQuery} />
           {searchQuery?(<IoCloseOutline onClick={() => setSearchQuery('')} className="w-5 h-5 text-red-300 duration-200 hover:cursor-pointer"/>):(<FaSearch className="w-5 h-5 hover:cursor-pointer"/>)}
-        </div>
+        </div> */}
         <div className='hidden md:inline-flex items-center gap-2'>
           {navBarList.map((item, index) => (
             

@@ -7,26 +7,26 @@ import Link from 'next/link';
 
 const PaymentSuccessfulPage = () => {
 	return (
-		<div class='flex items-center justify-center h-screen'>
-			<div class='p-1 rounded shadow-lg bg-gradient-to-r from-purple-500 via-green-500 to-blue-500'>
-				<div class='flex flex-col items-center p-4 space-y-2 bg-white '>
+		<div className='flex items-center justify-center h-screen'>
+			<div className='p-1 rounded shadow-lg bg-gradient-to-r from-purple-500 via-green-500 to-blue-500'>
+				<div className='flex flex-col items-center p-4 space-y-2 bg-white '>
 					<div>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
-							class='text-green-600 w-28 h-28 animate-pulse'
+							className='text-green-600 w-28 h-28 animate-pulse'
 							fill='none'
 							viewBox='0 0 24 24'
 							stroke='currentColor'
-							stroke-width='1'>
+							strokeWidth='1'>
 							<path
-								stroke-linecap='round'
-								stroke-linejoin='round'
+								strokeLinecap='round'
+								strokeLinejoin='round'
 								d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
 							/>
 						</svg>
 					</div>
 
-					<h1 class='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse'>
+					<h1 className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse'>
 						Thank You !
 					</h1>
 					<p className='px-10 py-5 font-extrabold text-2xl text-green-600'>
@@ -37,18 +37,18 @@ const PaymentSuccessfulPage = () => {
 						href='/'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
-							class='w-3 h-3 mr-2'
+							className='w-3 h-3 mr-2'
 							fill='none'
 							viewBox='0 0 24 24'
 							stroke='currentColor'
-							stroke-width='2'>
+							strokeWidth='2'>
 							<path
-								stroke-linecap='round'
-								stroke-linejoin='round'
+								strokeLinecap='round'
+								strokeLinejoin='round'
 								d='M7 16l-4-4m0 0l4-4m-4 4h18'
 							/>
 						</svg>
-						<span class='text-sm font-medium'>Home</span>
+						<span className='text-sm font-medium'>Home</span>
 					</Link>
 				</div>
 			</div>
