@@ -1,3 +1,4 @@
+
 import {
 	useStripe,
 	useElements,
@@ -7,34 +8,30 @@ import { useState, useContext } from 'react';
 import PaymentSuccessfulPage from '../../../(WithoutLayout)/PaymentSuccessfulPage/page';
 import GlobalApi from '../../_utils/GlobalApi';
 import { useUser } from "@clerk/nextjs";
-import CartContext from '../../_context/CartContext'
-import { toast } from "sonner"
+import CartContext from '../../_context/CartContext';
+import { toast } from "sonner";
+import { sendEmail } from '../../../api/mail';
+
 
 const CheckoutForm = ({ amount }) => {
 	const { isSignedIn, user } = useUser();
-	const { cart, setCart } = useContext(CartContext)
+	const { cart, setCart } = useContext(CartContext);
 
 	const stripe = useStripe();
 	const elements = useElements();
-	const [errorMessage, setErrorMessage] = useState();
-	const [loading, setLoading] = useState(false);
+	const [ errorMessage, setErrorMessage ] = useState();
+	const [ loading, setLoading ] = useState(false);
 	const handleError = (error) => {
 		setLoading(false);
 		setErrorMessage(error.message);
 	};
-	// let productIds = [];
-	// cart&&cart.map((item, index) => {
-	// 	productIds.push(item?.attributes?.products?.data[0]?.id)
-	// 	console.log(item?.attributes?.products?.data[0]?.id)
-	// })
-	// console.log(` cart : ${JSON.stringify(cart,null,' ')}productIds: ${productIds}`);
-	// create order
+
 	const createOrder = () => {
 		let productIds = [];
 		cart.map((item, index) => {
-			productIds.push(item?.attributes?.products?.data[0]?.id)
-		})
-		console.log(`productIds: ${productIds}`)
+			productIds.push(item?.attributes?.products?.data[ 0 ]?.id);
+		});
+		console.log(`productIds: ${productIds}`);
 		const data =
 		{
 			data: {
@@ -45,23 +42,24 @@ const CheckoutForm = ({ amount }) => {
 			}
 		};
 		GlobalApi.createOrder(data).then((resp) => {
-			console.log(`create order response : ${resp}`)
-			if (resp.statusText === 'OK') {
+			console.log(`create order response : ${resp}`);
+			if (resp.statusText === 'OK')
+			{
 				toast.success('Order created successfully');
 				cart.map((item, index) => {
 					GlobalApi.deleteCartItem(item.id).then((resp) => {
-						console.log(resp)
+						console.log(resp);
 					}),
 						(err) => {
-							toast.error(`Error while deleting cart item :  ${err.message}`)
-							console.log(`Error while deleting cart item:  ${err.message}`)
-						}
-				})
+							toast.error(`Error while deleting cart item :  ${err.message}`);
+							console.log(`Error while deleting cart item:  ${err.message}`);
+						};
+				});
 			}
 		},
 			(err) => {
-				toast.error(`Error while Creating Order :  ${err.message}`)
-				console.log(`Error while Creating Order:  ${err.message}`)
+				toast.error(`Error while Creating Order :  ${err.message}`);
+				console.log(`Error while Creating Order:  ${err.message}`);
 			}
 		);
 	};
@@ -70,7 +68,8 @@ const CheckoutForm = ({ amount }) => {
 		// which would refresh the page.
 		event.preventDefault();
 
-		if (!stripe || !elements) {
+		if (!stripe || !elements)
+		{
 			// Stripe.js hasn't yet loaded.
 			// Make sure to disable form submission until Stripe.js has loaded.
 			return;
@@ -79,11 +78,14 @@ const CheckoutForm = ({ amount }) => {
 		setLoading(true);
 		// Trigger form validation and wallet collection
 		const { error: submitError } = await elements.submit();
-		if (submitError) {
+		if (submitError)
+		{
 			handleError(submitError);
 			return;
 		}
+
 		createOrder();
+		sendEmail();
 		const res = await fetch('/api/create-intent', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -101,16 +103,32 @@ const CheckoutForm = ({ amount }) => {
 			},
 		});
 
-		if (result.error) {
+		if (result.error)
+		{
 			// Show error to your customer (for example, payment details incomplete)
 			console.log(result.error.message);
-		} else {
+		} else
+		{
 			// Your customer will be redirected to your `return_url`. For some payment
 			// methods like iDEAL, your customer will be redirected to an intermediate
 			// site first to authorize the payment, then redirected to the `return_url`.
-		}
-	};
 
+
+		}
+		
+	};
+	// user&&sendEmail({ to: user.primaryEmailAddress.emailAddress, name: user.fullName, body: amount });
+	const sendEmail = async ()=>{
+		const res = await fetch('/api/send', {
+			method: 'POST',
+			body: JSON.stringify({
+				email: user.primaryEmailAddress.emailAddress,
+				name: user.fullName,
+				amount: amount
+			}),
+		});
+
+	}
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className='px-32 md:mx-[400px] mt-12'>

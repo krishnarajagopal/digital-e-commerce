@@ -6,6 +6,7 @@ import GetCartItems from "../_utils/GetCartItems";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+
 const Cart = () => {
   const { isSignedIn, user } = useUser();
   const { cart, setCart } = useContext(CartContext);
